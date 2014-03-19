@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.boredream.dbhelper.DBHelper;
 import com.boredream.meowmoment.BaseActivity;
 import com.boredream.meowmoment.R;
 import com.boredream.meowmoment.constants.CommonConstants;
@@ -47,7 +48,7 @@ public class SettingActivity extends BaseActivity implements OnClickListener {
 
 	private void setDataUpdateResult() {
 		Intent intent = new Intent(this, MainActivity.class);
-		intent.putExtra(CommonConstants.EXTRA_KEY_IS_DATA_UPDATE, isBackupSuccess | isRestoreSuccess);
+		intent.putExtra(CommonConstants.EXTRA_KEY_IS_DATA_UPDATE, isRestoreSuccess);
 		setResult(RESULT_CODE_DATA_UPDATE, intent);
 	}
 
@@ -55,7 +56,6 @@ public class SettingActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.titlebar_left:
-			setDataUpdateResult();
 			this.finish();
 			break;
 		case R.id.setting_btn_backup:
@@ -73,6 +73,10 @@ public class SettingActivity extends BaseActivity implements OnClickListener {
 				public void onClick(DialogInterface dialog, int which) {
 					isRestoreSuccess = FileUtils.restoreDB(SettingActivity.this);
 					showToast(isRestoreSuccess?"»Ö¸´³É¹¦":"»Ö¸´Ê§°Ü");
+					if(isRestoreSuccess) {
+						setDataUpdateResult();
+						finishActivity();
+					}
 				}
 			});
 			break;

@@ -41,6 +41,11 @@ public class DBHelper extends SQLiteOpenHelper {
 		}
 		Log.i(TAG, "DatabaseHelper construct");
 	}
+	
+	public static DBHelper updateDBHelper(Context context) {
+		instance = new DBHelper(context);
+		return instance;
+	}
 
 	/**
 	 * 该函数是在第一次创建数据库的时候执行，实际上是第一次得到SQLiteDatabase对象的时候才会调用这个方法

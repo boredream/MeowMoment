@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.boredream.dbhelper.DBHelper;
 import com.boredream.meowmoment.BaseActivity;
 import com.boredream.meowmoment.R;
 import com.boredream.meowmoment.adapter.MomentListAdapter;
@@ -206,7 +207,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 				boolean isUpdate = data.getBooleanExtra(CommonConstants.EXTRA_KEY_IS_DATA_UPDATE, false);
 				if(isUpdate) {
 					log("数据备份变化,重新加载数据");
-					loadLocalMoment();
+					dbHelper = DBHelper.updateDBHelper(this);
 				}
 			}
 
