@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+	<color name="coffee">#9a7b5e</color>
+	<color name="dark_coffee">#635645</color>
+	<color name="light_coffee">#af9e8a</color>
+	<color name="alpha_light_coffee">#559a7b5e</color>
+</resources>
